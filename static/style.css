@@ -1,0 +1,269 @@
+@import url(fonts/ubuntu-light.css);
+@import url(fonts/abel.css);
+
+*
+{
+	margin: 0px;
+}
+
+body
+{
+	width: 100%;
+	margin: auto;
+	max-width: 720px;
+	max-width: 640px;
+	
+	color: #282828;
+	font-size: 18px;
+	font-family: ubuntu-light;
+	
+	background-color: #E7DBBD;
+	background-image: url("images/hoffman.png");
+}
+
+header, footer
+{
+	padding: 0.5em;
+	height:4em;
+	color: #E7DBBD;
+	font-weight: bold;
+	
+	background-color: #525552;
+}
+
+header
+{
+	text-align: right;
+}
+
+#logo
+{
+	float:left;
+	height:5.5em;
+	margin-top:-10px;
+	padding-left:15px;
+}
+
+footer
+{
+	text-align: center;
+}
+
+section
+{
+	margin-top: 1em;
+	position: relative;
+}
+
+section > #content
+{
+	margin-bottom: 1em;
+	margin-left: 180px;
+	min-height: 66px;
+}
+
+section > #navigation
+{
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	width: 144px;
+	padding: 0.5em;
+	position: absolute;
+	
+	color: #E7DBBD;
+	font-weight: bold;
+	
+	background-color: #525552;
+}
+
+section > #navigation > ul
+{
+	padding: 0px;
+	list-style-type: none;
+}
+
+@media(max-width: 480px)
+{
+	section > #content
+	{
+		margin-left: auto;
+	}
+	
+	section > #navigation
+	{
+		width: auto;
+		position: static;
+	}
+	
+	section > #navigation > ul
+	{
+		text-align: center;
+	}
+	
+	section > #navigation > ul > li
+	{
+		display: inline;
+		margin: 0em 1em;
+	}
+}
+
+#profile
+{
+	padding: 1em;
+	border-radius: 2px;
+	background-color: #C9341C;
+}
+
+#profile > h1
+{
+	font-size: 48px;
+	line-height: 1em;
+	font-family: abel;
+	text-align: center;
+	
+	border-radius: 2px;
+	background-color: #E7DBBD;
+}
+
+#profile > img
+{
+	width: 100%;
+	display: block;
+	margin: 0.5em 0em;
+	
+	border-radius: 3px;
+}
+
+#profile > ul
+{
+	padding: 0em;
+	line-height: 1em;
+	margin: 0.5em 0em;
+	
+	text-align: center;
+	list-style-type: none;
+}
+
+#profile > ul > li
+{
+	padding: 0.25em;
+	display: inline-block;
+	margin-bottom: 0.25em;
+	
+	font-weight: bold;
+	
+	border-radius: 2px;
+	background-color: #E7DBBD;
+}
+
+#profile > ul > li#add
+{
+	width: 2em;
+	height: 1em;
+	cursor: pointer;
+	vertical-align: bottom;
+	
+	background-size: 1em;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url("images/edit.png");
+}
+
+#profile > textarea
+{
+	width: 100%;
+	resize: none;
+}
+
+#find
+{
+	padding: 1em;
+	background-color: #C9341C;
+}
+
+#find > input
+{
+	width: 100%;
+	margin-bottom: 0.5em;
+}
+
+#find > #info
+{
+	margin-bottom: 1em;
+}
+
+#matches
+{
+	margin-top: 1em;
+}
+
+#matches > ul
+{
+	padding: 0px;
+	list-style-type: none;
+}
+
+#matches > ul > li
+{
+	height: 3em;
+	margin-bottom: 0.5em;
+}
+
+#matches > ul > li > div
+{
+	line-height: 1em;
+}
+#matches > ul > li > #name
+{
+	font-size: 2em;
+	white-space: nowrap;
+}
+
+#matches > ul > li > img
+{
+	height: 3em;
+	float: left;
+	margin-right: 0.25em;
+}
+
+
+
+
+
+
+
+
+
+#container
+{
+	padding-bottom:70px;
+}
+
+#blurb
+{
+	text-align:left;
+	font-size:20px;
+	
+}
+
+#login
+{
+	font-size:20px;
+}
+
+#linkedin 
+{
+	margin-top:20px;
+	margin-right:20px;
+	width:80px;
+	height:80px;
+}
+
+#google
+{
+	margin-top:20px;
+	margin-right:20px;
+	width:80px;
+	height:80px;
+}
