@@ -1,0 +1,1 @@
+GetBizy is a project for connecting potential partners together for projects!
