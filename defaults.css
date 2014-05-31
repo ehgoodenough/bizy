@@ -10,7 +10,7 @@ body
 {
 	width: 100%;
 	margin: auto;
-	max-width: 640px;
+	max-width: 720px;
 	
 	color: #282828;
 	font-size: 18px;
@@ -30,15 +30,14 @@ header, footer
 	background-color: #525552;
 }
 
+header
+{
+	text-align: right;
+}
+
 footer
 {
 	text-align: center;
-}
-
-#logo
-{
-	width: 100%;
-	margin-top: 1em;
 }
 
 section
@@ -47,26 +46,28 @@ section
 	position: relative;
 }
 
-section > div
+section > #content
 {
 	margin-bottom: 1em;
-	margin-left: 156px;
+	margin-left: 180px;
 }
 
-section > nav
+section > #navigation
 {
 	top: 0px;
 	left: 0px;
 	bottom: 0px;
-	width: 120px;
+	width: 144px;
 	padding: 0.5em;
 	position: absolute;
 	
 	color: #E7DBBD;
+	font-weight: bold;
+	
 	background-color: #525552;
 }
 
-section > nav > ul
+section > #navigation > ul
 {
 	padding: 0px;
 	list-style-type: none;
@@ -74,23 +75,23 @@ section > nav > ul
 
 @media(max-width: 480px)
 {
-	section > div
+	section > #content
 	{
 		margin-left: auto;
 	}
 	
-	section > nav
+	section > #navigation
 	{
 		width: auto;
 		position: static;
 	}
 	
-	section > nav > ul
+	section > #navigation > ul
 	{
 		text-align: center;
 	}
 	
-	section > nav > ul > li
+	section > #navigation > ul > li
 	{
 		display: inline;
 		margin: 0em 1em;
