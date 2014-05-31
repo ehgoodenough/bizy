@@ -1,0 +1,109 @@
+@import url(fonts/ubuntu-light.css);
+@import url(fonts/abel.css);
+
+*
+{
+	margin: 0px;
+}
+
+body
+{
+	width: 100%;
+	margin: auto;
+	max-width: 720px;
+	max-width: 640px;
+	
+	color: #282828;
+	font-size: 18px;
+	font-family: ubuntu-light;
+	
+	background-color: #E7DBBD;
+	background-image: url("images/hoffman.png");
+}
+
+header, footer
+{
+	padding: 0.5em;
+	height:4em;
+	color: #E7DBBD;
+	font-weight: bold;
+	
+	background-color: #525552;
+}
+
+header
+{
+	text-align: right;
+}
+
+#logo
+{
+	float:left;
+	height:5.5em;
+	margin-top:-10px;
+	padding-left:15px;
+}
+
+footer
+{
+	text-align: center;
+}
+
+section
+{
+	margin-top: 1em;
+	position: relative;
+}
+
+section > #content
+{
+	margin-bottom: 1em;
+	margin-left: 180px;
+	min-height: 66px;
+}
+
+section > #navigation
+{
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	width: 144px;
+	padding: 0.5em;
+	position: absolute;
+	
+	color: #E7DBBD;
+	font-weight: bold;
+	
+	background-color: #525552;
+}
+
+section > #navigation > ul
+{
+	padding: 0px;
+	list-style-type: none;
+}
+
+@media(max-width: 480px)
+{
+	section > #content
+	{
+		margin-left: auto;
+	}
+	
+	section > #navigation
+	{
+		width: auto;
+		position: static;
+	}
+	
+	section > #navigation > ul
+	{
+		text-align: center;
+	}
+	
+	section > #navigation > ul > li
+	{
+		display: inline;
+		margin: 0em 1em;
+	}
+}
