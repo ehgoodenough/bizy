@@ -7,4 +7,10 @@
 #find > input
 {
 	width: 100%;
+	margin-bottom: 0.5em;
+}
+
+#find > #info
+{
+	margin-bottom: 1em;
 }
