@@ -11,6 +11,7 @@ body
 	width: 100%;
 	margin: auto;
 	max-width: 720px;
+	max-width: 640px;
 	
 	color: #282828;
 	font-size: 18px;
