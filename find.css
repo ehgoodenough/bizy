@@ -1,0 +1,10 @@
+#find
+{
+	padding: 1em;
+	background-color: #C9341C;
+}
+
+#find > input
+{
+	width: 100%;
+}
