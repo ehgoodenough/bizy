@@ -1,0 +1,17 @@
+@import url(fonts/ubuntu-light.css);
+@import url(fonts/abel.css);
+
+*
+{
+	margin: 0px;
+	font-family: ubuntu-light;
+}
+
+body
+{
+	color: #282828;
+	font-size: 18px;
+	
+	background-color: #E7DBBD;
+	background-image: url("images/hoffman.png");
+}

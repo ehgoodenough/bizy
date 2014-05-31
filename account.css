@@ -1,0 +1,77 @@
+#content
+{
+	margin: auto;
+	max-width: 480px;
+}
+
+#content > #logo
+{
+	width: 100%;
+}
+
+#profile
+{
+	padding: 1em;
+	background-color: #C9341C;
+}
+
+#profile > h1
+{
+	font-size: 48px;
+	line-height: 1em;
+	font-family: abel;
+	text-align: center;
+	
+	border-radius: 2px;
+	background-color: #E7DBBD;
+}
+
+#profile > img
+{
+	width: 100%;
+	display: block;
+	margin: 0.5em 0em;
+	
+	border-radius: 3px;
+}
+
+#profile > ul
+{
+	padding: 0em;
+	line-height: 1em;
+	margin: 0.5em 0em;
+	
+	text-align: center;
+	list-style-type: none;
+}
+
+#profile > ul > li
+{
+	padding: 0.25em;
+	display: inline-block;
+	margin-bottom: 0.25em;
+	
+	font-weight: bold;
+	
+	border-radius: 2px;
+	background-color: #E7DBBD;
+}
+
+#profile > ul > li#add
+{
+	width: 2em;
+	height: 1em;
+	cursor: pointer;
+	vertical-align: bottom;
+	
+	background-size: 1em;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url("images/edit.png");
+}
+
+#profile > textarea
+{
+	width: 100%;
+	resize: none;
+}
