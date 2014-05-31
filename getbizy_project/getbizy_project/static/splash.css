@@ -3,6 +3,14 @@
 	padding-bottom:70px;
 }
 
+#logo
+{
+	float:left;
+	height:5.5em;
+	margin-top:-10px;
+	padding-left:15px;
+}
+
 #blurb
 {
 	text-align:left;
