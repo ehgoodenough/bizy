@@ -36,6 +36,14 @@ header
 	text-align: right;
 }
 
+#logo
+{
+	float:left;
+	height:5.5em;
+	margin-top:-10px;
+	padding-left:15px;
+}
+
 footer
 {
 	text-align: center;
