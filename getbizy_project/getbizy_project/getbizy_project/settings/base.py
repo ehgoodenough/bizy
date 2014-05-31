@@ -204,6 +204,7 @@ INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
 AUTHENTICATION_BACKENDS = (
   'social_auth.backends.google.GoogleOAuth2Backend',
+  'social_auth.backends.contrib.linkedin.LinkedinBackend',
   'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -226,16 +227,10 @@ SOCIAL_AUTH_ENABLED_BACKENDS = ('google')
 GOOGLE_OAUTH2_CLIENT_ID = '26949836116-t4p1d6jsn3ec46tbr13vi6oe7107em7g.apps.googleusercontent.com'
 GOOGLE_OAUTH2_CLIENT_SECRET = 'I_ylEnn2Q4uNC9DHz5laTHAt' 
 
+LINKEDIN_CONSUMER_KEY             = '750x4gy2rdvzoy'
+LINKEDIN_CONSUMER_SECRET          = '4gQlenOiEv3ctsxM'
+
 SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
-SOCIAL_AUTH_PIPELINE = (
-    'social_auth.backends.pipeline.social.social_auth_user',
-    'social_auth.backends.pipeline.associate.associate_by_email',
-    'social_auth.backends.pipeline.user.get_username',
-    'social_auth.backends.pipeline.user.create_user',
-    'social_auth.backends.pipeline.social.associate_user',
-    'social_auth.backends.pipeline.user.update_user_details',
-    'auth_pipelines.pipelines.get_user_avatar',
-)
 ########## END LOGIN URL CONFIGURATION 
 
 ########## LOGGING CONFIGURATION

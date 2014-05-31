@@ -10,18 +10,13 @@ admin.autodiscover()
 urlpatterns = patterns('',
     #url(r'^$', TemplateView.as_view(template_name='base.html')),
 
-    # Examples:
+    url(r'', include('social_auth.urls')),
     url(r'^$', 'social.views.home', name='home'),
+
     url(r'^logged-in/', 'social.views.logged_in', name='logged-in'),
     url(r'^logout/', 'social.views.logout', name='logout'),
-    # url(r'^getbizy_project/', include('getbizy_project.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'', include('social_auth.urls')),
 )
 
 # Uncomment the next line to serve media files in dev.
