@@ -51,6 +51,7 @@ section > #content
 {
 	margin-bottom: 1em;
 	margin-left: 180px;
+	min-height: 66px;
 }
 
 section > #navigation

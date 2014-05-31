@@ -17,6 +17,7 @@
 #matches > ul > li > #name
 {
 	font-size: 2em;
+	white-space: nowrap;
 }
 
 #matches > ul > li > img
