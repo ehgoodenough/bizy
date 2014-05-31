@@ -1,14 +1,3 @@
-#content
-{
-	margin: auto;
-	max-width: 480px;
-}
-
-#content > #logo
-{
-	width: 100%;
-}
-
 #profile
 {
 	padding: 1em;

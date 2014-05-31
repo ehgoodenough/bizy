@@ -4,14 +4,95 @@
 *
 {
 	margin: 0px;
-	font-family: ubuntu-light;
 }
 
 body
 {
+	width: 100%;
+	margin: auto;
+	max-width: 640px;
+	
 	color: #282828;
 	font-size: 18px;
+	font-family: ubuntu-light;
 	
 	background-color: #E7DBBD;
 	background-image: url("images/hoffman.png");
+}
+
+header, footer
+{
+	padding: 0.5em;
+	
+	color: #E7DBBD;
+	font-weight: bold;
+	
+	background-color: #525552;
+}
+
+footer
+{
+	text-align: center;
+}
+
+#logo
+{
+	width: 100%;
+	margin-top: 1em;
+}
+
+section
+{
+	margin-top: 1em;
+	position: relative;
+}
+
+section > div
+{
+	margin-bottom: 1em;
+	margin-left: 156px;
+}
+
+section > nav
+{
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	width: 120px;
+	padding: 0.5em;
+	position: absolute;
+	
+	color: #E7DBBD;
+	background-color: #525552;
+}
+
+section > nav > ul
+{
+	padding: 0px;
+	list-style-type: none;
+}
+
+@media(max-width: 480px)
+{
+	section > div
+	{
+		margin-left: auto;
+	}
+	
+	section > nav
+	{
+		width: auto;
+		position: static;
+	}
+	
+	section > nav > ul
+	{
+		text-align: center;
+	}
+	
+	section > nav > ul > li
+	{
+		display: inline;
+		margin: 0em 1em;
+	}
 }
