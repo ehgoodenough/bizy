@@ -14,7 +14,7 @@ def home(request):
         return HttpResponseRedirect('logged-in')
     else:
         return render_to_response(
-                                'base.html',
+                                'splash.html',
                                 {'version': version},
                                 RequestContext(request)
                             )
@@ -27,7 +27,7 @@ def logged_in(request):
         'version': version,
         'last_login': request.session.get('social_auth_last_login_backend')
     }
-    return render_to_response('profile.html', ctx, RequestContext(request))
+    return render_to_response('account.html', ctx, RequestContext(request))
 
 
 def error(request):
