@@ -195,10 +195,11 @@ DJANGO_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'crispy_forms',
     'social_auth',
     'social',
 )
-
+CRISPY_TEMPLATE_PACK='bootstrap3'
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
 
@@ -212,7 +213,7 @@ AUTHENTICATION_BACKENDS = (
 
 ########## LOGIN URL CONFIGURATION 
 LOGIN_URL          = '/login-form/'
-LOGIN_REDIRECT_URL = '/logged-in/'
+LOGIN_REDIRECT_URL = '/my-profile/'
 LOGIN_ERROR_URL    = '/login-error/'
 
 SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'

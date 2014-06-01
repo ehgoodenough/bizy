@@ -4,14 +4,17 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.contrib.messages.api import get_messages
+from django.core.urlresolvers import reverse
 
 from social_auth import __version__ as version
+from .forms import UserProfileForm, SimpleProfileForm
+from .models import UserProfile
 
 
 def home(request):
     """Home view, displays login mechanism"""
     if request.user.is_authenticated():
-        return HttpResponseRedirect('logged-in')
+        return HttpResponseRedirect('my-profile')
     else:
         return render_to_response(
                                 'splash.html',
@@ -19,24 +22,81 @@ def home(request):
                                 RequestContext(request)
                             )
 
-
 @login_required
-def logged_in(request):
+def my_profile(request):
     """Login complete view, displays user data"""
+    profile = UserProfile.objects.filter(user=request.user)[0]
     ctx = {
-        'version': version,
-        'last_login': request.session.get('social_auth_last_login_backend')
+        'user': request.user,
+        'profile': profile,
+        'status': 'looking for a parner',
+        'skills': profile.skills.split(',')
+
     }
     return render_to_response('account.html', ctx, RequestContext(request))
 
+@login_required
+def edit_profile(request):
 
-def error(request):
-    """Error view"""
-    messages = get_messages(request)
-    return render_to_response('error.html', {'version': version,
-                                             'messages': messages},
-                              RequestContext(request))
+    profile = UserProfile.objects.filter(user=request.user)[0]
+    form_attrs = {
+        'profile_photo': profile.profile_photo,
+        'description': profile.description,
+        'skills': profile.skills,
+        'status': profile.status,
+        'statuses': profile.STATUSES
+    }
+    form = SimpleProfileForm(form_attrs)
 
+    if request.method == 'POST':
+        print request.POST
+        form = SimpleProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            profile.profile_photo = form.cleaned_data['profile_photo']
+            profile.description = form.cleaned_data['description']
+            profile.skills = form.cleaned_data['skills']
+            profile.status = form.cleaned_data['status']
+            profile.save()
+            return HttpResponseRedirect('my-profile')
+
+    ctx = {
+        'form': form,
+        'form_attrs': form_attrs
+    }
+    return render_to_response('edit_profile.html', ctx, RequestContext(request))
+
+@login_required
+def edit_account(request):
+
+    profile = UserProfile.objects.filter(user=request.user)[0]
+    form_attrs = {
+        'first_name': request.user.first_name, 
+        'last_name': request.user.last_name, 
+        'email': request.user.email, 
+        'profile_photo': profile.profile_photo,
+        'description': profile.description,
+        'skills': profile.skills,
+    }
+    form = UserProfileForm(form_attrs)
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            request.user.first_name = form.cleaned_data['first_name']
+            request.user.last_name = form.cleaned_data['last_name']
+            request.user.email = form.cleaned_data['email']
+            request.user.save()
+            
+            profile.profile_photo = form.cleaned_data['profile_photo']
+            profile.description = form.cleaned_data['description']
+            profile.skills = form.cleaned_data['skills']
+
+            profile.save()
+
+    ctx = {
+        'form': form
+    }
+    return render_to_response('edit_account.html', ctx, RequestContext(request))
 
 def logout(request):
     """Logs out user"""

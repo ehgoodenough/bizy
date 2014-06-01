@@ -4,42 +4,44 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>GetBizy!</title>
-		<link href="{% static "css/account.css" %}" rel="stylesheet" type="text/css"/>
-		<link href="{% static "css/defaults.css" %}" rel="stylesheet" type="text/css"/>
+		<link href="{% static "style.css" %}" rel="stylesheet" type="text/css"/>
 		<script src="{% static "utility/jquery.js"%}" type="text/javascript"></script>
 	</head>
 	<body>
 		<header>
-            <a href="{% url 'logout' %}">Logout</a>
+			<img src="{% static "images/logo.png" %}"/>
+			<nav>
+				<a href="{% url 'logout' %}">Get Bizy!</a>
+				<a href="{% url 'edit-profile' %}">Edit Profile</a>
+				<a href="{% url 'logout' %}">Logout</a>
+			</nav>
 		</header>
 		<section>
         {% block content %}
-			<div id="content">
-				<div id="profile">
-					<h1>Andrew McPherson</h1>
-					<img src="{% static "images/andrew.jpg"%}"/>
-					
-					<ul id="skills">
-						<li>Java</li>
-						<li>JavaScript</li>
-						<li>MongoDB</li>
-						<li>NodeJS</li>
-						<li>ExpressJS</li>
-						<li>SocketIO</li>
-						<li>MeteorJS</li>
-						<li>HTML5</li>
-						<li>CSS3</li>
-						<li id="add"></li>
-					</ul>
+			<div id="public" class="view">
+				<div id="left">
+					<div id="user-box">
+						<img id="picture" src="{% static "images/myspacetom.jpg" %}"/>
+						<div id="name" class="overlay">{{profile.full_name}}</div>
+						<div id="preference" class="overlay">{{status}}</div>
+					</div>
 				</div>
-			</div>
-			
-			<div id="navigation">
-				<ul>
-					<li>Home</li>
-					<li>Edit Profile</li>
-					<li>Find Others</li>
-				</ul>
+				
+				<div id="right">
+					<div id="skills-list">
+					{% for skill in skills %}
+						<span class="skill">{{skill}}</span>
+					{% endfor %}
+					</div>
+					<p id="aboutme">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, dolor at faucibus mollis, metus turpis suscipit leo, quis mollis sem sapien ut neque. Nam sit amet ligula eu turpis tincidunt tincidunt tempus semper velit. Morbi adipiscing elit quis libero.
+					</p>
+				</div>
+				
+				<div id="bottom">
+					<a id="pass" class="button" href="">I'll Pass.</a>
+					<a id="accept" class="button" href="">Get Bizy!</a>
+				</div>
 			</div>
         {% endblock content %}
 		</section>

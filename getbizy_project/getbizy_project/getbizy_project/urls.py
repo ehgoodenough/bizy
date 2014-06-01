@@ -13,14 +13,16 @@ urlpatterns = patterns('',
     url(r'', include('social_auth.urls')),
     url(r'^$', 'social.views.home', name='home'),
 
-    url(r'^logged-in/', 'social.views.logged_in', name='logged-in'),
-    url(r'^logout/', 'social.views.logout', name='logout'),
+    url(r'^my-profile/', 'social.views.my_profile', name='my-profile'),
+    url(r'^edit-profile/', 'social.views.edit_profile', name='edit-profile'),
+    url(r'^edit-account/', 'social.views.edit_account', name='edit-account'),
 
+    url(r'^logout/', 'social.views.logout', name='logout'),
     url(r'^admin/', include(admin.site.urls)),
 )
 
 # Uncomment the next line to serve media files in dev.
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
