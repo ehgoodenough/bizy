@@ -244,3 +244,20 @@ section
 		text-align: center;
 	}
 }
+
+#splash.view
+{
+	width: 320px;
+}
+
+#splash.view > p
+{
+	text-align: justify;
+}
+
+#splash.view > #buttons
+{
+	width: 142px;
+	margin: auto;
+	margin-top: 1em;
+}
