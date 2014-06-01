@@ -1,0 +1,3 @@
+Both handlebars.creds.js and passport.creds.js need to be updated with server information, and the oauth needs to redirect appropriately.
+
+I threw this together when I realized that the django server wasn't going to work in time for the demo; the aws instance just wasn't operating, and the version on connor's computer wouldn't connect beyond the server. it was either take snapshots or repurpose my code from computc for the backend. i added a lot of dummy profiles for the session to cycle through, as well as an "accept" page, that was hacky set up to allow me to select connor to get bizy.

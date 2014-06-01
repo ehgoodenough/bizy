@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Get Bizy!</title>
+		<link href="style.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<header>
+			<a href="/">
+				<img src="images/logo.png"/>
+			</a>
+			<menu>
+				{{#if me}}
+					Welcome, <a href="/profile">{{me.name}}!</a>
+					| <a href="/logout">Logout</a>
+				{{else}}
+					Heya! <a href="/login/google">Login</a>
+				{{/if}}
+			</menu>
+		</header>
+		<section>
+			{{{body}}}
+		</section>
+		<footer>
+			GetBizy is a project from Hackanooga!
+		</footer>
+	</body>
+</html>

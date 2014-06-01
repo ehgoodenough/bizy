@@ -1,0 +1,17 @@
+{
+	"name": "getbizy",
+	"version": "0.2.0",
+	"description": "dating service for business",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/arcym/getbizy.git"
+	},
+	"dependencies": {
+		"express": "*",
+		"express3-handlebars": "*",
+		"connect": "*",
+		"passport": "*",
+		"passport-google-oauth": "*",
+		"mongojs": "*"
+	}
+}

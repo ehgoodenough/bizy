@@ -1,0 +1,38 @@
+<div id="public" class="view" style="width:320px">
+	
+	{{#with them}}
+		<div id="left">
+			<div id="user-box">
+				<img id="picture" src="{{picture}}"/>
+				<div id="name" class="overlay">{{name}}</div>
+				<div id="preference" class="overlay">
+					{{#if preference}}
+						{{preference}}
+					{{else}}
+						I'm fine with anything. ;p
+					{{/if}}
+				</div>
+			</div>
+		</div>
+		
+		<div id="right" style="position: static; text-align: center;">
+			<div id="skills-list">
+				{{#each skills}}
+					<span class="skill">{{this}}</span>
+				{{else}}
+					No skills.
+				{{/each}}
+			</div>
+			<p>
+				{{#if description}}
+					{{description}}
+				{{else}}
+					No about me.
+				{{/if}}
+			</p>
+			<br>
+			<a href="mailto:{{email}}" class="button">Contact them now!</a>
+		</div>
+	{{/with}}
+	
+</div>
