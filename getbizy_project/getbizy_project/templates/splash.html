@@ -1,40 +1,29 @@
+{% extends 'account.html' %}
 {% load staticfiles %}
-<html>
-	<title>GetBizy!</title>
-	<head>
-		<meta charset="UTF-8">
-		<title>GetBizy!</title>
-		<link href="{% static "defaults.css" %}" rel="stylesheet" type="text/css"/>
-		<link href="{% static "splash.css" %}" rel="stylesheet" type="text/css"/>
-		<script src="{% static "utility/jquery.js"%}" type="text/javascript"></script>
-	</head>
-	<header>
-        <image  src="{% static "media/gitbizy.png"%}" id="logo"></image> 
-	</header>	
-	
-	<body>
+{% block nav %}
+{% endblock nav %}
 {% block content %}
-		</br>
-		<div id="container">
-			<div id="blurb">
-				Have a project idea that you want other people's help to work on?  Have skills you want to put to good use?</br></br>
-				GetBizy links project creators to those that have the skills to make them.  You can find developers, designers, editors, and more to help you create your project.
-				And if you have skills to put to use, you can search through projects to work on.</br></br>
-				Go ahead, sign in, and get busy!
-			</div> 
-			<div id="login">
-				<p> Sign in with one of these great services:</br>
-				<a rel="nofollow" href="{% url "socialauth_begin" "linkedin" %}">
-                    <input type="image" src="{% static "media/linked-in.png"%}" id="linkedin"></input>
-                </a>
-				<a rel="nofollow" href="{% url "socialauth_begin" "google-oauth2" %}">
-                    <input type="image" src="{% static "media/google.png"%}" id="google"></input>
-                </a>
-			</div>
-			</br></br>
-		</div>
 		
-		<hr noshade width="100%";>	
+<section>
+	
+	<div id="splash" class="view">
+		
+		<img src="{% static "images/logo.png"%}" width="100%"/>
+		
+		<p>
+			Are you feeling lonely while working on your projects? Do you want to find that *certain someone* to
+			"collaborate" with you? Well search no further! <b>GetBizy</b> makes it easy to connect with others who
+			are in your local area that have interests that match yours and skills you lack! After you found that
+			*certain someone,* reach out to them via email to set up a business lunch to GET BIZY!
+		</p>
+		
+		<div id="buttons">
+			<a rel="nofollow" href="{% url "socialauth_begin" "linkedin" %}"><img 
+			src="{% static "images/linked-in.png"%}" height="64px"/></a>
+			<a rel="nofollow" href="{% url "socialauth_begin" "google-oauth2" %}"><img
+			 src="{% static "images/google.png"%}" height="64px"/></a>
+		</div>
+	</div>
+	
+</section>
 {% endblock content %}
-	</body>
-</html>

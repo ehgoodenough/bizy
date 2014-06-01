@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
 <section>		
-<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+<form action="{% url 'edit-profile' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
 <div id="edit" class="view">
 	<div id="left">
 		<div id="user-box">
@@ -25,7 +25,9 @@
 		<label for="aboutme-form">about me</label>
 		(<span id="aboutme-chars-left">120</span> characters left)
 		<textarea id="aboutme-form" name="description">{{form_attrs.description}}</textarea>
-		
+		<label for="profile-form">Update your profile pic?</label>
+		<input type="file" id="profile-form" name="profile_photo" size="40">
+		</p>
 		<input type="submit" value="Get started; Get Bizy!" id="start" class="button" href="">
 	</div>
 </div>

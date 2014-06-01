@@ -212,9 +212,9 @@ AUTHENTICATION_BACKENDS = (
 ########## END APP CONFIGURATION
 
 ########## LOGIN URL CONFIGURATION 
-LOGIN_URL          = '/login-form/'
+LOGIN_URL          = '/'
 LOGIN_REDIRECT_URL = '/my-profile/'
-LOGIN_ERROR_URL    = '/login-error/'
+LOGIN_ERROR_URL    = '/'
 
 SOCIAL_AUTH_DEFAULT_USERNAME = 'new_social_auth_user'
 SOCIAL_AUTH_UID_LENGTH = 16

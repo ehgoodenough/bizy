@@ -40,7 +40,7 @@ header > nav
 	float: right;
 }
 
-header > nav > a
+header > nav > span > a
 {
 	color: inherit;
 	margin-left: 0.5em;
@@ -59,9 +59,10 @@ section
 
 @media(max-width: 480px)
 {
-	header > img
+	header > nav > span
 	{
-		display: none;
+		display: block;
+		line-height: 1em;
 	}
 }
 
@@ -77,15 +78,17 @@ section
 .view > #left
 {
 	width: 320px;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
 }
 
 .view > #right
 {
-	top: 0px;
-	bottom: 0px;
-	left: 338px;
+
 	width: 320px;
-	position: absolute;
+	margin-left: 338px;
+	min-height: 320px;
 }
 
 @media(max-width: 694px)
@@ -95,10 +98,15 @@ section
 		width: 320px;
 	}
 	
+	.view > #left
+	{
+		margin-bottom: 1em;
+		position: static;
+	}
 	.view > #right
 	{
-		margin-top: 1em;
-		position: static;
+		margin-left: auto;
+		min-height: 0px;
 	}
 }
 
@@ -168,6 +176,7 @@ section
 	color: #FFF;
 	border-radius: 2px;
 	background-color: #525552;
+	white-space: nowrap;
 }
 
 .view > #bottom
@@ -216,12 +225,13 @@ section
 {
 	width: 100%;
 	resize: none;
-	height: 4.5em;
+	height: 8em;
 	margin-bottom: 1em;
 	
 	font-size: inherit;
 	font-family: inherit;
 }
+
 
 .view > #right > .button
 {
@@ -242,4 +252,33 @@ section
 	{
 		text-align: center;
 	}
+}
+
+#splash.view
+{
+	width: 320px;
+}
+
+#splash.view > p
+{
+	text-align: justify;
+}
+
+#splash.view > #buttons
+{
+	width: 142px;
+	margin: auto;
+	margin-top: 1em;
+}
+#start.button
+{
+	display: block;
+	width:100%;
+	font-family: inherit;
+	font-size: inherit;
+}
+#left > label
+{
+	display: block;
+	margin-top: 1em;
 }

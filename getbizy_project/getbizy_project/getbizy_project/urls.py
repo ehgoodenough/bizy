@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^my-profile/', 'social.views.my_profile', name='my-profile'),
     url(r'^edit-profile/', 'social.views.edit_profile', name='edit-profile'),
     url(r'^edit-account/', 'social.views.edit_account', name='edit-account'),
+    url(r'^view-user/', 'social.views.view_user', name='view-user'),
 
     url(r'^logout/', 'social.views.logout', name='logout'),
     url(r'^admin/', include(admin.site.urls)),

@@ -10,6 +10,8 @@ class SimpleProfileForm(forms.Form):
     description = forms.CharField(max_length=256, widget=forms.Textarea)
     skills = forms.CharField(max_length=128, widget=forms.Textarea)
     status = forms.CharField()
+    email = forms.EmailField(required=True)
+    full_name = forms.CharField()
 
 
 class UserProfileForm(forms.Form):

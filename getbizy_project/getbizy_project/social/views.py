@@ -5,10 +5,14 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response, redirect
 from django.contrib.messages.api import get_messages
 from django.core.urlresolvers import reverse
+from django.shortcuts import get_object_or_404
+
+import random
 
 from social_auth import __version__ as version
 from .forms import UserProfileForm, SimpleProfileForm
-from .models import UserProfile
+from .models import UserProfile, User
+
 
 
 def home(request):
@@ -27,13 +31,36 @@ def my_profile(request):
     """Login complete view, displays user data"""
     profile = UserProfile.objects.filter(user=request.user)[0]
     ctx = {
+        'profile_photo': profile.profile_photo,
+        'description': profile.description,
+        'status': profile.status,
+        'statuses': profile.STATUSES,
         'user': request.user,
         'profile': profile,
-        'status': 'looking for a parner',
         'skills': profile.skills.split(',')
 
     }
     return render_to_response('account.html', ctx, RequestContext(request))
+
+@login_required
+def view_user(request):
+    """Login complete view, displays user data"""
+    users = User.objects.exclude(pk=request.user.id)
+    users = list(users)
+    random.shuffle(users)
+    user = users[0]
+    profile = UserProfile.objects.get(user=user)
+    ctx = {
+        'profile_photo': profile.profile_photo,
+        'description': profile.description,
+        'status': profile.status,
+        'statuses': profile.STATUSES,
+        'user': request.user,
+        'profile': profile,
+        'skills': profile.skills.split(',')
+
+    }
+    return render_to_response('busy_view.html', ctx, RequestContext(request))
 
 @login_required
 def edit_profile(request):
@@ -52,18 +79,35 @@ def edit_profile(request):
         print request.POST
         form = SimpleProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            profile.profile_photo = form.cleaned_data['profile_photo']
+            
+            request.user.first_name = ''
+            request.user.last_name = ''
+            
+            full_name = form.cleaned_data['full_name']
+            name_list = full_name.split(' ')
+            request.user.first_name = name_list[0]
+
+            if len(name_list) > 1:
+                request.user.last_name = name_list[1]
+
+            request.user.email = form.cleaned_data['email']
+            request.user.save()
+
+            if form.cleaned_data['profile_photo']:
+                profile.profile_photo = form.cleaned_data['profile_photo']
             profile.description = form.cleaned_data['description']
             profile.skills = form.cleaned_data['skills']
             profile.status = form.cleaned_data['status']
+
             profile.save()
-            return HttpResponseRedirect('my-profile')
+            return HttpResponseRedirect(reverse('my-profile'))
 
     ctx = {
-        'form': form,
+        'user': request.user,
+        'profile': profile,
         'form_attrs': form_attrs
     }
-    return render_to_response('edit_profile.html', ctx, RequestContext(request))
+    return render_to_response('edit_account.html', ctx, RequestContext(request))
 
 @login_required
 def edit_account(request):

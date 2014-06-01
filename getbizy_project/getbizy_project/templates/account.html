@@ -11,9 +11,10 @@
 		<header>
 			<img src="{% static "images/logo.png" %}"/>
 			<nav>
-				<a href="{% url 'logout' %}">Get Bizy!</a>
-				<a href="{% url 'edit-profile' %}">Edit Profile</a>
-				<a href="{% url 'logout' %}">Logout</a>
+			{% block nav %}
+				Hello, <a href="{% url 'my-profile' %}">{{profile.full_name}}</a> |
+				<a href="{% url 'logout' %}">Logout</a> ?
+			{% endblock nav %}
 			</nav>
 		</header>
 		<section>
@@ -21,9 +22,13 @@
 			<div id="public" class="view">
 				<div id="left">
 					<div id="user-box">
-						<img id="picture" src="{% static "images/myspacetom.jpg" %}"/>
+						<img id="picture" src="/media/{{profile_photo}}"/>
 						<div id="name" class="overlay">{{profile.full_name}}</div>
-						<div id="preference" class="overlay">{{status}}</div>
+						<div id="preference" class="overlay">
+						{%for item in statuses %}
+							{% if status == item.0 %} {{item.1}} {% endif %}
+						{% endfor %}
+						</div>
 					</div>
 				</div>
 				
@@ -34,13 +39,13 @@
 					{% endfor %}
 					</div>
 					<p id="aboutme">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, dolor at faucibus mollis, metus turpis suscipit leo, quis mollis sem sapien ut neque. Nam sit amet ligula eu turpis tincidunt tincidunt tempus semper velit. Morbi adipiscing elit quis libero.
+						{{description}}
 					</p>
 				</div>
 				
 				<div id="bottom">
-					<a id="pass" class="button" href="">I'll Pass.</a>
-					<a id="accept" class="button" href="">Get Bizy!</a>
+					<a id="pass" class="button" href="{% url 'edit-profile' %}">Edit Profile</a>
+					<a id="accept" class="button" href="{% url 'view-user' %}">Get Bizy!</a>
 				</div>
 			</div>
         {% endblock content %}
