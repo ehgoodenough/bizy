@@ -225,12 +225,6 @@ SOCIAL_AUTH_ASSOCIATION_HANDLE_LENGTH = 16
 
 SOCIAL_AUTH_ENABLED_BACKENDS = ('google')
 
-GOOGLE_OAUTH2_CLIENT_ID = '26949836116-t4p1d6jsn3ec46tbr13vi6oe7107em7g.apps.googleusercontent.com'
-GOOGLE_OAUTH2_CLIENT_SECRET = 'I_ylEnn2Q4uNC9DHz5laTHAt' 
-
-LINKEDIN_CONSUMER_KEY             = '750x4gy2rdvzoy'
-LINKEDIN_CONSUMER_SECRET          = '4gQlenOiEv3ctsxM'
-
 SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
 ########## END LOGIN URL CONFIGURATION 
 

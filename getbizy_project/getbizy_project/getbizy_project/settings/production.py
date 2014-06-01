@@ -51,9 +51,23 @@ SERVER_EMAIL = EMAIL_HOST_USER
 ########## END EMAIL CONFIGURATION
 
 ########## DATABASE CONFIGURATION
-DATABASES = {}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': normpath(join(DJANGO_ROOT, 'default.db')),
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    }
+}
 ########## END DATABASE CONFIGURATION
 
+GOOGLE_OAUTH2_CLIENT_ID = '934352317449-j8sblrj0o3rf4ddresq4ok9v2358va0h.apps.googleusercontent.com'
+GOOGLE_OAUTH2_CLIENT_SECRET = 'uM-bR52cV8-4BOpbi-7nHaGw'
+
+LINKEDIN_API_KEY          =  '77p88rotmtqbw1'
+LINKEDIN_CONSUMER_SECRET  = 'lNaF54mhrkzPtEgr'
 
 ########## CACHE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#caches
