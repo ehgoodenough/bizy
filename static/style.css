@@ -8,40 +8,42 @@
 
 body
 {
-	width: 100%;
-	margin: auto;
-	max-width: 720px;
-	max-width: 640px;
+	min-width: 356px;
 	
-	color: #282828;
+	color: #222;
 	font-size: 18px;
 	font-family: ubuntu-light;
 	
-	background-color: #E7DBBD;
+	background-color: #FFF;
 	background-image: url("images/hoffman.png");
 }
 
 header, footer
 {
 	padding: 0.5em;
-	height:4em;
-	color: #E7DBBD;
+	line-height: 2em;
+	
+	color: #FFF;
+	overflow: hidden;
 	font-weight: bold;
 	
-	background-color: #525552;
+	background-color: rgb(247, 87, 49);
 }
 
-header
+header > img
 {
-	text-align: right;
+	height: 2em;
 }
 
-#logo
+header > nav
 {
-	float:left;
-	height:5.5em;
-	margin-top:-10px;
-	padding-left:15px;
+	float: right;
+}
+
+header > nav > a
+{
+	color: inherit;
+	margin-left: 0.5em;
 }
 
 footer
@@ -51,219 +53,192 @@ footer
 
 section
 {
-	margin-top: 1em;
-	position: relative;
-}
-
-section > #content
-{
-	margin-bottom: 1em;
-	margin-left: 180px;
-	min-height: 66px;
-}
-
-section > #navigation
-{
-	top: 0px;
-	left: 0px;
-	bottom: 0px;
-	width: 144px;
-	padding: 0.5em;
-	position: absolute;
-	
-	color: #E7DBBD;
-	font-weight: bold;
-	
-	background-color: #525552;
-}
-
-section > #navigation > ul
-{
-	padding: 0px;
-	list-style-type: none;
+	padding: 1em;
+	margin: auto;
 }
 
 @media(max-width: 480px)
 {
-	section > #content
+	header > img
 	{
-		margin-left: auto;
+		display: none;
+	}
+}
+
+
+
+.view
+{
+	margin: auto;
+	max-width: 658px;
+	position: relative;
+}
+
+.view > #left
+{
+	width: 320px;
+}
+
+.view > #right
+{
+	top: 0px;
+	bottom: 0px;
+	left: 338px;
+	width: 320px;
+	position: absolute;
+}
+
+@media(max-width: 694px)
+{
+	.view
+	{
+		width: 320px;
 	}
 	
-	section > #navigation
+	.view > #right
 	{
-		width: auto;
+		margin-top: 1em;
 		position: static;
 	}
-	
-	section > #navigation > ul
-	{
-		text-align: center;
-	}
-	
-	section > #navigation > ul > li
-	{
-		display: inline;
-		margin: 0em 1em;
-	}
 }
 
-#profile
+.view > #left > #user-box
 {
-	padding: 1em;
-	border-radius: 2px;
-	background-color: #C9341C;
+	overflow: hidden;
+	position: relative;
+	border-radius: 7px;
 }
 
-#profile > h1
+.view > #left > #user-box > #picture
 {
-	font-size: 48px;
-	line-height: 1em;
+	width: 100%;
+}
+
+.view > #left > #user-box > .overlay
+{
+	color: #EEE;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	
+	width: 100%;
+	border: none;
+	font-size: inherit;
+	font-family: inherit;
+	
+	background-color: rgba(238, 238, 238, 0.5);
+}
+
+.view > #left > #user-box > #name.overlay
+{
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	position: absolute;
+	
+	font-size: 28px;
 	font-family: abel;
-	text-align: center;
-	
-	border-radius: 2px;
-	background-color: #E7DBBD;
-}
-
-#profile > img
-{
-	width: 100%;
-	display: block;
-	margin: 0.5em 0em;
-	
-	border-radius: 3px;
-}
-
-#profile > ul
-{
-	padding: 0em;
-	line-height: 1em;
-	margin: 0.5em 0em;
-	
-	text-align: center;
-	list-style-type: none;
-}
-
-#profile > ul > li
-{
-	padding: 0.25em;
-	display: inline-block;
-	margin-bottom: 0.25em;
-	
 	font-weight: bold;
-	
-	border-radius: 2px;
-	background-color: #E7DBBD;
 }
 
-#profile > ul > li#add
+.view > #left > #user-box > #preference.overlay
 {
-	width: 2em;
-	height: 1em;
-	cursor: pointer;
-	vertical-align: bottom;
-	
-	background-size: 1em;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-image: url("images/edit.png");
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	position: absolute;
 }
 
-#profile > textarea
+.view > #left > #user-box > #preference.overlay > option
 {
-	width: 100%;
-	resize: none;
+	color: #111;
 }
 
-#find
+.view > #right > #skills-list
 {
-	padding: 1em;
-	background-color: #C9341C;
-}
-
-#find > input
-{
-	width: 100%;
-	margin-bottom: 0.5em;
-}
-
-#find > #info
-{
+	line-height: 2em;
 	margin-bottom: 1em;
 }
 
-#matches
+.view > #right > #skills-list > .skill
 {
-	margin-top: 1em;
-}
-
-#matches > ul
-{
-	padding: 0px;
-	list-style-type: none;
-}
-
-#matches > ul > li
-{
-	height: 3em;
-	margin-bottom: 0.5em;
-}
-
-#matches > ul > li > div
-{
-	line-height: 1em;
-}
-#matches > ul > li > #name
-{
-	font-size: 2em;
-	white-space: nowrap;
-}
-
-#matches > ul > li > img
-{
-	height: 3em;
-	float: left;
-	margin-right: 0.25em;
-}
-
-
-
-
-
-
-
-
-
-#container
-{
-	padding-bottom:70px;
-}
-
-#blurb
-{
-	text-align:left;
-	font-size:20px;
+	padding: 0.25em;
 	
+	color: #FFF;
+	border-radius: 2px;
+	background-color: #525552;
 }
 
-#login
+.view > #bottom
 {
-	font-size:20px;
+	width: 320px;
+	margin: auto;
+	margin-top: 1em;
+	position: relative;
 }
 
-#linkedin 
+.view > #bottom > .button
 {
-	margin-top:20px;
-	margin-right:20px;
-	width:80px;
-	height:80px;
+	height: 2em;
+	display: block;
+	
+	color: #FFF;
+	line-height: 2em;
+	text-align: center;
+	
+	border-radius: 4px;
+	background-color: #525552;
 }
 
-#google
+.view > #bottom > #accept.button
 {
-	margin-top:20px;
-	margin-right:20px;
-	width:80px;
-	height:80px;
+	width: 48%;
+}
+
+.view > #bottom > #pass.button
+{
+	width: 48%;
+	float: right;
+}
+
+.view > #right > label
+{
+	font-weight: bold;
+}
+
+.view > #right > label:hover
+{
+	color: rgb(247, 87, 49);
+}
+
+.view > #right > textarea
+{
+	width: 100%;
+	resize: none;
+	height: 4.5em;
+	margin-bottom: 1em;
+	
+	font-size: inherit;
+	font-family: inherit;
+}
+
+.view > #right > .button
+{
+	height: 4em;
+	display: block;
+	
+	color: #FFF;
+	line-height: 4em;
+	text-align: center;
+	
+	border-radius: 4px;
+	background-color: #525552;
+}
+
+@media(max-width: 694px)
+{
+	.view > #right > #skills-list
+	{
+		text-align: center;
+	}
 }
