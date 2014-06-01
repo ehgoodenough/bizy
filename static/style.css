@@ -40,7 +40,7 @@ header > nav
 	float: right;
 }
 
-header > nav > a
+header > nav > span > a
 {
 	color: inherit;
 	margin-left: 0.5em;
@@ -59,9 +59,10 @@ section
 
 @media(max-width: 480px)
 {
-	header > img
+	header > nav > span
 	{
-		display: none;
+		display: block;
+		line-height: 1em;
 	}
 }
 
