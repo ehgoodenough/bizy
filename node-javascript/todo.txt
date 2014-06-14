@@ -1,0 +1,2 @@
+todo: fix the router to fit the user experience.
+todo: update the layout to utilize the new responsitivity.
