@@ -1,5 +1,8 @@
-module.exports = function(server, passport, mongo)
+module.exports = function(express, passport, mongo)
 {
+	express.use("/", require("express").static("resource_directory/"));
+	express.use("/profile", require("express").static("resource_directory/"));
+	
 	var prefs = [
 		"Wants a short term fling",
 		"Looking for a long term partner",
@@ -79,17 +82,17 @@ module.exports = function(server, passport, mongo)
 	var connor = dummies[dummies.length-1];
 	connor.preference = "Waiting for that *certain someone*";
 	
-	server.get("/", function(request, response)
+	express.get("/", function(request, response)
 	{
 		response.render("splash");
 	});
 	
-	server.get("/profile/connor", ensureAuthentication, function(request, response)
+	express.get("/profile/connor", ensureAuthentication, function(request, response)
 	{
 		response.render("connor", {me: request.user, them: connor});
 	});
 	
-	server.get("/profile/*", ensureAuthentication, function(request, response)
+	express.get("/profile/*", ensureAuthentication, function(request, response)
 	{
 		var route = request.params[0];
 		
@@ -113,7 +116,7 @@ module.exports = function(server, passport, mongo)
 		}
 	});
 	
-	server.get("/next", function(request, response)
+	express.get("/next", function(request, response)
 	{
 		var dummy = dummies.shift();
 		dummies.push(dummy);
@@ -129,16 +132,16 @@ module.exports = function(server, passport, mongo)
 		});*/
 	});
 	
-	server.get("/edit", ensureAuthentication, function(request, response)
+	express.get("/edit", ensureAuthentication, function(request, response)
 	{
 		response.render("edit", {me: request.user});
 	});
 	
-	server.get("/login/google", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]}));
-	server.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/"}));
-	server.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
+	express.get("/login/google", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]}));
+	express.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/"}));
+	express.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
 	
-	server.all("*", function(request, response)
+	express.all("*", function(request, response)
 	{
 		response.render("error", {me: request.user});
 	});

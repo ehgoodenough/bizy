@@ -10,6 +10,7 @@
 		"express": "*",
 		"express3-handlebars": "*",
 		"connect": "*",
+		"connect-flash": "*",
 		"passport": "*",
 		"passport-google-oauth": "*",
 		"mongojs": "*"
