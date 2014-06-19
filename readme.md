@@ -1,1 +1,1 @@
-GetBizy is a project for connecting potential partners together for projects!
+Both handlebars.creds.js and passport.creds.js need to be updated with server information, and the oauth needs to redirect appropriately.
