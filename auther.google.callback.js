@@ -13,9 +13,9 @@ module.exports = function(mongo)
 			else
 			{
 				var user = {
-					id: profile.id,
 					name: profile.name,
 					email: profile.email,
+					google_id: profile.id,
 					picture: profile.picture
 				};
 				

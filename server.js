@@ -17,9 +17,9 @@ express.use(passport.session());
 
 
 mongo = mongo("bizy", ["users"]);
-mongo.users.drop(); //for debug
 
 
+require("./databer.js")(mongo);
 require("./auther.js")(passport, mongo);
 require("./viewer.js")(handlebars, express);
 require("./router.js")(express, passport, mongo);
