@@ -1,0 +1,1 @@
+generalize some of my styles so I can apply them to other pages, fix some responsitivity issues, ensure mobile compatibility, and include the login menu in the header
