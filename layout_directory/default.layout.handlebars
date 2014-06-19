@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Bizy</title>
 		<meta charset="UTF-8">
-		<title>Get Bizy!</title>
-		<link href="/style.css" rel="stylesheet" type="text/css"/>
+		<link href="/default.layout.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
+
 		<header>
 			<a href="/">
-				<img src="/images/logo.png"/>
+				<img src="/images/logo.png" alt="Bizy"/>
 			</a>
 			<menu>
 				{{#if me}}
@@ -19,11 +20,14 @@
 				{{/if}}
 			</menu>
 		</header>
+
 		<section>
 			{{{body}}}
 		</section>
+
 		<footer>
-			GetBizy is a project from Hackanooga!
+			Bizy is a project from Hackanooga!
 		</footer>
+
 	</body>
 </html>
