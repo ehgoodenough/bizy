@@ -1,10 +1,10 @@
 {
 	"name": "getbizy",
 	"version": "0.2.0",
-	"description": "dating service for business",
+	"description": "meeting others in the community",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/arcym/getbizy.git"
+		"url": "https://github.com/arcym/bizy.git"
 	},
 	"dependencies": {
 		"express": "*",

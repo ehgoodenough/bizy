@@ -1,1 +1,1 @@
-Both handlebars.creds.js and passport.creds.js need to be updated with server information, and the oauth needs to redirect appropriately.
+I'll finish this readme later, right?
