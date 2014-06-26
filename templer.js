@@ -1,10 +1,9 @@
-module.exports = function(application, handlebars)
+module.exports = function(application)
 {
-	var templer = handlebars(CONFIGURATION);
-	application.engine("handlebars", templer);
+	var handlebars = require("express3-handlebars");
+	var configuration = require("./templer.configuration.js");
+	
+	application.engine("handlebars", handlebars(configuration));
 	application.set("view engine", "handlebars");
-	application.set("views", CONTENT_DIRECTORY);
+	application.set("views", __dirname + "/content_directory/");
 }
-
-var CONTENT_DIRECTORY = "content_directory/";
-var CONFIGURATION = require("./templer.configuration.js");

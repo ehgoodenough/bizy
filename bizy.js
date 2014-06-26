@@ -1,10 +1,9 @@
 var express = require("express");
 var mongo = require("mongojs");
 var passport = require("passport");
-var handlebars = require("express3-handlebars");
 
 
-//mongo = mongo("bizy", ["users"]);
+var database = mongo("bizy", ["users"]);
 
 
 application = express();
@@ -17,7 +16,8 @@ application.use(passport.initialize());
 application.use(passport.session());
 
 
-require("./templer.js")(application, handlebars);
+require("./databer.js")(database);
+require("./templer.js")(application);
 
 
 application.use(express.static(__dirname + "/resource_directory"));
