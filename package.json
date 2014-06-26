@@ -8,9 +8,10 @@
 	},
 	"dependencies": {
 		"express": "*",
+		"body-parser": "*",
+		"cookie-parser": "*",
+		"express-session": "*",
 		"express3-handlebars": "*",
-		"connect": "*",
-		"connect-flash": "*",
 		"passport": "*",
 		"passport-google-oauth": "*",
 		"mongojs": "*"
