@@ -1,6 +1,3 @@
 generalize some of my styles so I can apply them to other pages
 fix some responsitivity issues and ensure mobile compatibility
 include the login menu in the header at the top of the layout
-
-remove the modules for templer and databer?
-establish routers for authentication and splash and profile

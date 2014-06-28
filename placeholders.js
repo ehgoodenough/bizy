@@ -1,3 +1,10 @@
+var placeholders = [
+	{
+		name: "Lenardo Da Vinci",
+		picture: "/images/davinci.jpg"
+	}
+];
+
 module.exports = function(database)
 {
 	database.users.drop();
@@ -7,10 +14,3 @@ module.exports = function(database)
 		database.users.insert(placeholders[index]);
 	}
 }
-
-var placeholders = [
-	{
-		name: "Lenardo Da Vinci",
-		picture: "/images/davinci.jpg"
-	}
-];

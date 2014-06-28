@@ -50,6 +50,8 @@ passport.use(new GoogleStrategy(GoogleCredentials, GoogleCallback));
 application.use(passport.initialize());
 application.use(passport.session());
 
+//todo: put this authentication interface into a route module.
+
 application.get("/login/google", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]}));
 application.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/"}));
 application.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
@@ -60,8 +62,23 @@ application.get("/logout", function(request, response) {request.logout(); respon
 
 application.use(express.static("./resources"));
 
+application.use(function(request, response, next)
+{
+	if(request.isAuthenticated())
+	{
+		response.locals.me = request.user;
+	}
+	
+	next();
+});
+
 application.use("/", require("./routes/splash.route.js"));
 application.use("/profile", require("./routes/profile.route.js"));
+
+application.get("*", function(request, response)
+{
+	response.render("error");
+});
 
 ///////////////////////////////////////////////////
 ////////////////////LISTENING/////////////////////
