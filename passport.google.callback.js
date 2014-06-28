@@ -1,10 +1,10 @@
-module.exports = function(mongo)
+module.exports = function(database)
 {
 	return function(access, refresh, profile, done)
 	{
 		profile = profile._json;
 		
-		mongo.users.findOne({id: profile.id}, {}, function(error, user)
+		database.users.findOne({id: profile.id}, {}, function(error, user)
 		{
 			if(user)
 			{
@@ -19,7 +19,7 @@ module.exports = function(mongo)
 					picture: profile.picture
 				};
 				
-				mongo.users.insert(user);
+				database.users.insert(user);
 				done(null, user);
 			}
 		});
