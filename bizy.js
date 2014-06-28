@@ -12,6 +12,7 @@ var handlebars = require("express3-handlebars");
 /////////////////////////////////////////////////
 
 var application = express();
+
 application.use(require("cookie-parser")());
 application.use(require("body-parser").json());
 application.use(require("body-parser").urlencoded({extended: true}));
@@ -22,16 +23,17 @@ application.use(require("express-session")({secret: "getting bizy!!"}));
 /////////////////////////////////////////////////
 
 var database = mongo("bizy", ["users"]);
-require("./mongodb.placeholders.js")(database);
+require("./placeholders.js")(database);
 
 ///////////////////////////////////////////////////
 ////////////////////TEMPLATING////////////////////
 /////////////////////////////////////////////////
 
-var configuration = require("./handlebars.options.js");
-application.engine("handlebars", handlebars(configuration));
-application.set("views", "./content_directory/");
+var options = require("./configs/handlebars.options.js");
+
+application.engine("handlebars", handlebars(options));
 application.set("view engine", "handlebars");
+application.set("views", "./content");
 
 ///////////////////////////////////////////////////
 //////////////////AUTHENTICATION//////////////////
@@ -40,10 +42,10 @@ application.set("view engine", "handlebars");
 passport.serializeUser(function(user, done) {done(null, user);});
 passport.deserializeUser(function(user, done) {done(null, user);});
 
-var google_credentials = require("./passport.google.credentials.js");
-var google_callback = require("./passport.google.callback.js")(database);
+var GoogleCallback = require("./configs/passport.google.callback.js")(database);
+var GoogleCredentials = require("./configs/passport.google.credentials.js");
 var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-passport.use(new GoogleStrategy(google_credentials, google_callback));
+passport.use(new GoogleStrategy(GoogleCredentials, GoogleCallback));
 
 application.use(passport.initialize());
 application.use(passport.session());
@@ -56,7 +58,7 @@ application.get("/logout", function(request, response) {request.logout(); respon
 /////////////////////ROUTING//////////////////////
 /////////////////////////////////////////////////
 
-application.use(express.static("./resource_directory"));
+application.use(express.static("./resources"));
 
 application.use("/", require("./routes/splash.route.js"));
 application.use("/profile", require("./routes/profile.route.js"));
