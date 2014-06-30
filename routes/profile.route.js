@@ -1,37 +1,40 @@
-var route = module.exports = require("express").Router();
-
-route.use(function(request, response, next)
+module.exports = function(database)
 {
-	if(request.isAuthenticated())
-	{
-		return next();
-	}
-	else
-	{
-		response.redirect("/");
-	}
-});
-
-route.get("/", function(request, response)
-{
-	response.render("profile");
-});
-
-route.get("/*", function(request, response)
-{
-	var path = request.params[0];
+	var route = require("express").Router();
 	
-	response.render("profile");
-	
-	/*database.users.findOne({id: path}, {}, function(error, user)
+	route.use(function(request, response, next)
 	{
-		if(user)
+		if(request.isAuthenticated())
 		{
-			response.render("profile", {user: user});
+			return next();
 		}
 		else
 		{
-			response.render("error");
+			response.redirect("/");
 		}
-	});*/
-});
+	});
+
+	route.get("/", function(request, response)
+	{
+		response.render("profile");
+	});
+
+	route.get("/*", function(request, response, next)
+	{
+		var path = request.params[0];
+		
+		database.users.findOne({first_name: new RegExp(path, "i")}, {}, function(error, user)
+		{
+			if(user)
+			{
+				response.render("profile", {them: user});
+			}
+			else
+			{
+				next();
+			}
+		});
+	});
+	
+	return route;
+}

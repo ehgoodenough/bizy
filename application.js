@@ -72,8 +72,8 @@ application.use(function(request, response, next)
 	next();
 });
 
-application.use("/", require("./routes/splash.route.js"));
-application.use("/profile", require("./routes/profile.route.js"));
+application.use("/", require("./routes/splash.route.js")());
+application.use("/profile", require("./routes/profile.route.js")(database));
 
 application.get("*", function(request, response)
 {

@@ -1,11 +1,16 @@
-var route = module.exports = require("express").Router();
-
-route.get("/", function(request, response)
+module.exports = function()
 {
-	response.render("splash");
-});
+	var route = require("express").Router();
+	
+	route.get("/", function(request, response)
+	{
+		response.render("splash");
+	});
 
-route.get("/login", function(request, response)
-{
-	response.render("login");
-});
+	route.get("/login", function(request, response)
+	{
+		response.render("login");
+	});
+	
+	return route;
+}
