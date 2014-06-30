@@ -4,7 +4,7 @@ module.exports = function(database)
 	{
 		profile = profile._json;
 		
-		database.users.findOne({id: profile.id}, {}, function(error, user)
+		database.users.findOne({google_id: profile.id}, {}, function(error, user)
 		{
 			if(user)
 			{
