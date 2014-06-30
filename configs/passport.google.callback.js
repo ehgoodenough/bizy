@@ -17,7 +17,8 @@ module.exports = function(database)
 					last_name: profile.family_name,
 					email: profile.email,
 					google_id: profile.id,
-					picture: profile.picture
+					picture: profile.picture,
+					user_name: new String(profile.given_name + "-" + profile.family_name).toLowerCase()
 				};
 				
 				database.users.insert(user);

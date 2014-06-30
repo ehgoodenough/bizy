@@ -10,7 +10,8 @@
 		<header>
 			<menu>
 				{{#if me}}
-					Welcome <a href="/profile">{{me.first_name}}</a>
+					<span>Welcome</span>
+					<a href="/profile/{{me.user_name}}">{{me.first_name}}</a>
 					| <a href="/logout">Logout</a>
 				{{else}}
 					<a href="/login">Login</a>

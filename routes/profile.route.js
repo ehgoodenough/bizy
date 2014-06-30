@@ -16,14 +16,14 @@ module.exports = function(database)
 
 	route.get("/", function(request, response)
 	{
-		response.render("profile");
+		response.redirect("/profile/" + request.user.user_name);
 	});
 
 	route.get("/*", function(request, response, next)
 	{
 		var path = request.params[0];
 		
-		database.users.findOne({first_name: new RegExp(path, "i")}, {}, function(error, user)
+		database.users.findOne({user_name: path}, {}, function(error, user)
 		{
 			if(user)
 			{
