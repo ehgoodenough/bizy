@@ -52,6 +52,11 @@ var FacebookCredentials = require("./configs/passport.facebook.credentials.js");
 var FacebookStrategy = require("passport-facebook").Strategy;
 passport.use(new FacebookStrategy(FacebookCredentials, FacebookCallback));
 
+var TwitterCallback = require("./configs/passport.twitter.callback.js")(database);
+var TwitterCredentials = require("./configs/passport.twitter.credentials.js");
+var TwitterStrategy = require("passport-twitter").Strategy;
+passport.use(new TwitterStrategy(TwitterCredentials, TwitterCallback));
+
 application.use(passport.initialize());
 application.use(passport.session());
 
@@ -61,6 +66,8 @@ application.get("/login/google", passport.authenticate("google", {scope: ["https
 application.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/"}));
 application.get("/login/facebook", passport.authenticate("facebook", {scope: ["email"]}));
 application.get("/login/facebook/again", passport.authenticate("facebook", {successRedirect: "/profile", failureRedirect: "/login"}));
+application.get("/login/twitter", passport.authenticate("twitter"));
+application.get("/login/twitter/again", passport.authenticate("twitter", {successRedirect: "/profile", failureRedirect: "/login"}));
 application.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
 
 ///////////////////////////////////////////////////
