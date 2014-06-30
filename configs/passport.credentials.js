@@ -14,5 +14,6 @@ module.exports.facebook = {
 module.exports.linkedin = {
 	consumerKey: "75k4eduj7g0mbl",
 	consumerSecret: "0aGqGyXZa68Q9axg",
-	callbackURL: "http://127.0.0.1:1271/login/linkedin/again/"
+	callbackURL: "http://127.0.0.1:1271/login/linkedin/again/",
+	profileFields: ["id", "first-name", "last-name", "email-address", "picture-url"]
 }

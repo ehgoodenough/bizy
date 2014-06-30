@@ -65,7 +65,7 @@ application.use(passport.session());
 
 application.get("/login/google", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]}));
 application.get("/login/facebook", passport.authenticate("facebook", {scope: ["email"]}));
-application.get("/login/linkedin", passport.authenticate("linkedin"));
+application.get("/login/linkedin", passport.authenticate("linkedin", {scope: ["r_basicprofile", 'r_emailaddress']}));
 
 application.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/login"}));
 application.get("/login/facebook/again", passport.authenticate("facebook", {successRedirect: "/profile", failureRedirect: "/login"}));

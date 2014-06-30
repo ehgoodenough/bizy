@@ -62,7 +62,28 @@ module.exports.linkedin = function(database)
 {
 	return function(access, refresh, profile, done)
 	{
-		console.log(profile);
-		done(null, true);
+		profile = profile._json;
+		
+		database.users.findOne({linkedin_id: profile.id}, {}, function(error, user)
+		{
+			if(user)
+			{
+				done(null, user);
+			}
+			else
+			{
+				var user = {
+					first_name: profile.firstName,
+					last_name: profile.lastName,
+					email: profile.emailAddress,
+					linkedin_id: profile.id,
+					picture: profile.pictureUrl,
+					user_name: new String(profile.firstName + "-" + profile.lastName).toLowerCase()
+				};
+				
+				database.users.insert(user);
+				done(null, user);
+			}
+		});
 	}
 }
