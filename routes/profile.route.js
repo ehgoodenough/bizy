@@ -10,7 +10,7 @@ module.exports = function(database)
 		}
 		else
 		{
-			response.redirect("/");
+			response.redirect("/login");
 		}
 	});
 

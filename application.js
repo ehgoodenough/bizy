@@ -42,25 +42,35 @@ application.set("views", "./content");
 passport.serializeUser(function(user, done) {done(null, user);});
 passport.deserializeUser(function(user, done) {done(null, user);});
 
-var GoogleCallback = require("./configs/passport.google.callback.js")(database);
-var GoogleCredentials = require("./configs/passport.google.credentials.js");
-var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-passport.use(new GoogleStrategy(GoogleCredentials, GoogleCallback));
+var passport_callbacks = require("./configs/passport.callbacks.js");
+var passport_credentials = require("./configs/passport.credentials.js");
 
-var FacebookCallback = require("./configs/passport.facebook.callback.js")(database);
-var FacebookCredentials = require("./configs/passport.facebook.credentials.js");
+var google_credentials = passport_credentials.google;
+var google_callback = passport_callbacks.google(database);
+var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+passport.use(new GoogleStrategy(google_credentials, google_callback));
+
+var facebook_credentials = passport_credentials.facebook;
+var facebook_callback = passport_callbacks.facebook(database);
 var FacebookStrategy = require("passport-facebook").Strategy;
-passport.use(new FacebookStrategy(FacebookCredentials, FacebookCallback));
+passport.use(new FacebookStrategy(facebook_credentials, facebook_callback));
+
+var linkedin_credentials = passport_credentials.linkedin;
+var linkedin_callback = passport_callbacks.linkedin(database);
+var LinkedinStrategy = require("passport-linkedin").Strategy;
+passport.use(new LinkedinStrategy(linkedin_credentials, linkedin_callback));
 
 application.use(passport.initialize());
 application.use(passport.session());
 
-//todo: put this authentication interface into a route module.
-
 application.get("/login/google", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]}));
-application.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/"}));
 application.get("/login/facebook", passport.authenticate("facebook", {scope: ["email"]}));
+application.get("/login/linkedin", passport.authenticate("linkedin"));
+
+application.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/login"}));
 application.get("/login/facebook/again", passport.authenticate("facebook", {successRedirect: "/profile", failureRedirect: "/login"}));
+application.get("/login/linkedin/again", passport.authenticate("linkedin", {successRedirect: "/profile", failureRedirect: "/login"}));
+
 application.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
 
 ///////////////////////////////////////////////////
