@@ -12,7 +12,7 @@ module.exports.facebook = {
 }
 
 module.exports.linkedin = {
-	consumerKey: "1571bb11-dbeb-45c7-94c4-47ec3533e36b",
-	consumerSecret: "54739b84-d9bb-4f8f-89bf-0d8364a6378d",
+	consumerKey: "75k4eduj7g0mbl",
+	consumerSecret: "0aGqGyXZa68Q9axg",
 	callbackURL: "http://127.0.0.1:1271/login/linkedin/again/"
 }
