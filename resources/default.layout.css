@@ -7,13 +7,16 @@
 	margin: 0px;
 }
 
-body
+html
 {
 	color: #222;
 	font-size: 18px;
 	font-family: ubuntu-light, calibri, sans-serif;
-	
-	background-color: #FFF;
+}
+
+body
+{
+	background-color: #EEE;
 	background-image: url("images/hoffman.png");
 }
 
@@ -23,14 +26,28 @@ header, footer
 	padding: 0.5em;
 	line-height: 2em;
 	
-	color: #FFF;
-	overflow: hidden;
+	color: #EEE;
 	font-weight: bold;
 	
 	background-color: rgb(247, 87, 49);
 }
 
-header   img
+header > menu
+{
+	float: right;
+}
+
+header > menu > a
+{
+	color: #222;
+}
+
+header > h1
+{
+	font: inherit;
+}
+
+header > h1 > a > img
 {
 	height: 2em;
 }

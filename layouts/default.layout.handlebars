@@ -8,17 +8,19 @@
 	<body>
 
 		<header>
-			<a href="/">
-				<img src="/images/logo.png" alt="Bizy"/>
-			</a>
 			<menu>
 				{{#if me}}
-					Welcome, <a href="/profile">{{me.name}}!</a>
+					Welcome <a href="/profile">{{me.name}}</a>
 					| <a href="/logout">Logout</a>
 				{{else}}
-					Heya! <a href="/login/google">Login</a>
+					<a href="/login/google">Login</a>
 				{{/if}}
 			</menu>
+			<h1>
+				<a href="/">
+					<img src="/images/logo.png" alt="Bizy"/>
+				</a>
+			</h1>
 		</header>
 
 		<section>
