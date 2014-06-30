@@ -17,11 +17,13 @@ route.get("/", function(request, response)
 	response.render("profile");
 });
 
-/*route.get("/profile/*", function(request, response)
+route.get("/*", function(request, response)
 {
 	var path = request.params[0];
-
-	mongo.users.findOne({id: path}, {}, function(error, user)
+	
+	response.render("profile");
+	
+	/*database.users.findOne({id: path}, {}, function(error, user)
 	{
 		if(user)
 		{
@@ -31,5 +33,5 @@ route.get("/", function(request, response)
 		{
 			response.render("error");
 		}
-	});
-});*/
+	});*/
+});

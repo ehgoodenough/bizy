@@ -1,6 +1,7 @@
 var placeholders = [
 	{
-		name: "Lenardo Da Vinci",
+		first_name: "Leonardo",
+		last_name: "Vinci",
 		picture: "/images/davinci.jpg"
 	}
 ];

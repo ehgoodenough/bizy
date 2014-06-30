@@ -13,7 +13,8 @@ module.exports = function(database)
 			else
 			{
 				var user = {
-					name: profile.name,
+					first_name: profile.given_name,
+					last_name: profile.family_name,
 					email: profile.email,
 					google_id: profile.id,
 					picture: profile.picture
