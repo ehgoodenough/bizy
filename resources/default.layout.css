@@ -22,9 +22,9 @@ body
 
 header, footer
 {
-	height: 2em;
-	padding: 0.5em;
-	line-height: 2em;
+	height: 2rem;
+	padding: 0.5rem;
+	line-height: 2rem;
 	
 	color: #EEE;
 	font-weight: bold;
@@ -47,12 +47,22 @@ header > h1
 	font: inherit;
 }
 
+header > h1 > a
+{
+	display: inline-block;
+}
+
 header > h1 > a > img
 {
-	height: 2em;
+	height: 2rem;
 }
 
 footer
 {
 	text-align: center;
+}
+
+#body
+{
+	margin: 1rem;
 }

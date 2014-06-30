@@ -1,18 +1,9 @@
 {{#if them}}
 	{{#with them}}
 		{{> user}}
-		<div id="bottom">
-			<a id="pass" class="button" href="/next">Keep Looking.</a>
-			<a id="accept" class="button" href="/profile/connor">Get Bizy!</a>
-		</div>
 	{{/with}}
 {{else}}
 	{{#with me}}
 		{{> user}}
 	{{/with}}
-	<div id="bottom">
-		<a id="edit" class="button" href="/edit">Edit my profile</a>
-		<a id="start" class="button" href="/next">Start searching!</a>
-	</div>
-	<span id="{{id}}"></span>
 {{/if}}
