@@ -13,6 +13,7 @@
 		"express-session": "*",
 		"express3-handlebars": "*",
 		"passport": "*",
+		"passport-facebook": "*",
 		"passport-google-oauth": "*",
 		"mongojs": "*"
 	}

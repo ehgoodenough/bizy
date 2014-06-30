@@ -47,6 +47,23 @@ var GoogleCredentials = require("./configs/passport.google.credentials.js");
 var GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
 passport.use(new GoogleStrategy(GoogleCredentials, GoogleCallback));
 
+var FacebookStrategy = require("passport-facebook").Strategy;
+passport.use(new FacebookStrategy(
+	{
+		clientID: "919723268054532",
+		clientSecret: "85acf133dd81efc2889021d90bc41eb3",
+		callbackURL: "http://127.0.0.1:1271/login/facebook/again/",
+		enableProof: false
+	},
+	function(access, refresh, profile, done)
+	{
+		profile = profile._json;
+		console.log(profile);
+		
+		done(null);
+	}
+));
+
 application.use(passport.initialize());
 application.use(passport.session());
 
@@ -54,6 +71,8 @@ application.use(passport.session());
 
 application.get("/login/google", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]}));
 application.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/"}));
+application.get("/login/facebook", passport.authenticate("facebook"));
+application.get("/login/facebook/again", passport.authenticate("facebook", {successRedirect: "/profile", failureRedirect: "/login"}));
 application.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
 
 ///////////////////////////////////////////////////
