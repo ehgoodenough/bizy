@@ -16,7 +16,7 @@ var application = express();
 application.use(require("cookie-parser")());
 application.use(require("body-parser").json());
 application.use(require("body-parser").urlencoded({extended: true}));
-application.use(require("express-session")({secret: "getting bizy!!"}));
+application.use(require("express-session")({secret: "getting bizy!!", saveUninitialized: true, resave: true}));
 
 ///////////////////////////////////////////////////
 ////////////////////DATABASING////////////////////
