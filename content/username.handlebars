@@ -1,1 +1,11 @@
-You are a new user!!
+{{#if error}}
+	<span class="warning">
+		That username already exists!
+	</span>
+{{/if}}
+
+<form action="/profile" method="post">
+	<label for="username">Username: </label>
+	<input type="text" id="username" name="username">
+	<input type="submit">
+</form>

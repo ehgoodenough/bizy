@@ -15,6 +15,28 @@ module.exports = function(database)
 			response.render("username");
 		}
 	});
+	
+	route.post("/", function(request, response)
+	{
+		var data = {username: request.body.username};
+		var _id = require("mongojs").ObjectId(request.user._id);
+		
+		database.users.findOne(data, {}, function(error, user)
+		{
+			if(user)
+			{
+				response.redirect("/profile");
+			}
+			else
+			{
+				database.users.update({_id: _id}, {$set: data}, function()
+				{
+					request.user.username = request.body.username;
+					response.redirect("/profile");
+				});
+			}
+		});
+	});
 
 	route.get("/*", function(request, response, next)
 	{
