@@ -11,8 +11,9 @@
 			<menu>
 				{{#if me}}
 					<span>Welcome</span>
-					<a href="/profile/{{me.user_name}}">{{me.first_name}}</a>
-					| <a href="/logout">Logout</a>
+					<a href="/profile/{{me.username}}">{{me.firstname}}</a>
+					<b>|</b>
+					<a href="/logout">Logout</a>
 				{{else}}
 					<a href="/login">Login</a>
 				{{/if}}

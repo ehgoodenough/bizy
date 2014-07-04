@@ -71,13 +71,13 @@ application.set("views", "./content");
 /////////////////////routing//////////////////////
 /////////////////////////////////////////////////
 
-application.use(require("./utilities/expose-user-details"));
+application.use(require("./middleware/user-locals"));
 
 application.use(require("express").static("./resources"));
 
-application.use("/", require("./routes/splash.route.js")());
-application.use("/login", require("./routes/login.route.js")(passport, database));
-application.use("/profile", require("./routes/profile.route.js")(database));
+application.use("/", require("./routes/splash.route")());
+application.use("/login", require("./routes/login.route")(passport, database));
+application.use("/profile", require("./routes/profile.route")(database));
 
 application.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
 application.get("*", function(request, response) {response.render("error");});

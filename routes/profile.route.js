@@ -2,28 +2,25 @@ module.exports = function(database)
 {
 	var route = require("express").Router();
 	
-	route.use(function(request, response, next)
-	{
-		if(request.isAuthenticated())
-		{
-			return next();
-		}
-		else
-		{
-			response.redirect("/login");
-		}
-	});
+	route.use(require("../middleware/authed-access"));
 
 	route.get("/", function(request, response)
 	{
-		response.redirect("/profile/" + request.user.user_name);
+		if(request.user.username)
+		{
+			response.redirect("/profile/" + request.user.username);
+		}
+		else
+		{
+			response.render("username");
+		}
 	});
 
 	route.get("/*", function(request, response, next)
 	{
 		var path = request.params[0];
 		
-		database.users.findOne({user_name: path}, {}, function(error, user)
+		database.users.findOne({username: path}, {}, function(error, user)
 		{
 			if(user)
 			{

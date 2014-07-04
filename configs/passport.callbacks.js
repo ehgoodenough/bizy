@@ -13,12 +13,11 @@ module.exports.google = function(database)
 			else
 			{
 				var user = {
-					first_name: profile.given_name,
-					last_name: profile.family_name,
+					firstname: profile.given_name,
+					lastname: profile.family_name,
 					email: profile.email,
 					google_id: profile.id,
-					picture: profile.picture,
-					user_name: new String(profile.given_name + "-" + profile.family_name).toLowerCase()
+					picture: profile.picture
 				};
 				
 				database.users.insert(user);
@@ -43,12 +42,11 @@ module.exports.facebook = function(database)
 			else
 			{
 				var user = {
-					first_name: profile.first_name,
-					last_name: profile.last_name,
+					firstname: profile.first_name,
+					lastname: profile.last_name,
 					email: profile.email,
 					facebook_id: profile.id,
-					picture: "http://graph.facebook.com/" + profile.id + "/picture?type=large",
-					user_name: new String(profile.first_name + "-" + profile.last_name).toLowerCase()
+					picture: "http://graph.facebook.com/" + profile.id + "/picture?type=large"
 				};
 				
 				database.users.insert(user);
@@ -73,12 +71,11 @@ module.exports.linkedin = function(database)
 			else
 			{
 				var user = {
-					first_name: profile.firstName,
-					last_name: profile.lastName,
+					firstname: profile.firstName,
+					lastname: profile.lastName,
 					email: profile.emailAddress,
 					linkedin_id: profile.id,
-					picture: profile.pictureUrl,
-					user_name: new String(profile.firstName + "-" + profile.lastName).toLowerCase()
+					picture: profile.pictureUrl
 				};
 				
 				database.users.insert(user);
