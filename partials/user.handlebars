@@ -3,25 +3,9 @@
 <div id="name">{{firstname}} {{lastname}}</div>
 
 <div>
-	{{#if preference}}
-		{{preference}}
-	{{else}}
-		No preference.
-	{{/if}}
-</div>
-
-<div>
-	{{#each skills}}
-		<span class="skill">{{this}}</span>
-	{{else}}
-		No skills.
-	{{/each}}
-</div>
-
-<div>
 	{{#if description}}
 		{{description}}
 	{{else}}
-		No about me.
+		No description yet.
 	{{/if}}
 </div>

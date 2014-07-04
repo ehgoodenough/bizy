@@ -1,10 +1,10 @@
 {{#if error}}
 	<span class="warning">
-		That username already exists!
+		{{error.message}}
 	</span>
 {{/if}}
 
-<form action="/profile" method="post">
+<form method="post">
 	<label for="username">Username: </label>
 	<input type="text" id="username" name="username">
 	<input type="submit">

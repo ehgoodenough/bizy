@@ -1,0 +1,18 @@
+{{#if error}}
+	<span class="warning">
+		{{error.message}}
+	</span>
+{{/if}}
+
+<form method="post">
+	<div>
+		<label for="username">Username: </label>
+		<input type="text" id="username" name="username" value="{{me.username}}">
+	</div>
+	<div>
+		<label for="description">Description: </label>
+		<br>
+		<textarea id="description" name="description">{{me.description}}</textarea>
+	</div>
+	<input type="submit">
+</form>

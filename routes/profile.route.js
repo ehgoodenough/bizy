@@ -25,7 +25,7 @@ module.exports = function(database)
 		{
 			if(user)
 			{
-				request.flash("error", 123);
+				request.flash("error", {message: "That username already exists!"});
 				response.redirect("/profile");
 			}
 			else
@@ -39,9 +39,9 @@ module.exports = function(database)
 		});
 	});
 
-	route.get("/*", function(request, response, next)
+	route.get("/:username", function(request, response, next)
 	{
-		var path = request.params[0];
+		var path = request.params.username;
 		
 		database.users.findOne({username: path}, {}, function(error, user)
 		{
@@ -54,6 +54,36 @@ module.exports = function(database)
 				next();
 			}
 		});
+	});
+
+	route.get("/:username/edit", function(request, response, next)
+	{
+		if(request.user.username == request.params.username)
+		{
+			response.render("edit");
+		}
+		else
+		{
+			response.redirect("/profile/" + request.params.username);
+		}
+	});
+
+	route.post("/:username/edit", function(request, response, next)
+	{
+		if(request.user.username == request.params.username)
+		{
+			var _id = require("mongojs").ObjectId(request.user._id);
+			database.users.update({_id: _id}, {$set: request.body});
+			
+			request.user.username = request.body.username;
+			request.user.description = request.body.description;
+			
+			response.redirect("/profile/" + request.user.username);
+		}
+		else
+		{
+			response.redirect("/profile/" + request.params.username);
+		}
 	});
 	
 	return route;

@@ -1,5 +1,4 @@
 generalize some of my styles so I can apply them to other pages
 fix some responsitivity issues and ensure mobile compatibility
-ensure that new users are only assigned UNIQUE usernames
-allow the users to edit and add their own information.
-export your middleware into more modules.
+only show the "edit" link on pages that you can edit (ie your own)
+update request.user through a database query, not by hand.
