@@ -1,5 +1,5 @@
 generalize some of my styles so I can apply them to other pages
 fix some responsitivity issues and ensure mobile compatibility
-combine authentication credentials into a single module
 ensure that new users are only assigned UNIQUE usernames
 allow the users to edit and add their own information.
+export your middleware into more modules.

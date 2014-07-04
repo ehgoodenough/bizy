@@ -6,11 +6,6 @@ module.exports = function()
 	{
 		response.render("splash");
 	});
-
-	route.get("/login", function(request, response)
-	{
-		response.render("login");
-	});
 	
 	return route;
 }

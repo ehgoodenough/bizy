@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////
-/////////////////////IMPORTING////////////////////
+/////////////////////importing////////////////////
 /////////////////////////////////////////////////
 
 var express = require("express");
@@ -8,10 +8,14 @@ var passport = require("passport");
 var handlebars = require("express3-handlebars");
 
 ///////////////////////////////////////////////////
-////////////////////CONFIGURING///////////////////
+///////////////////instantiating//////////////////
 /////////////////////////////////////////////////
 
 var application = express();
+
+///////////////////////////////////////////////////
+////////////////////configuring///////////////////
+/////////////////////////////////////////////////
 
 application.use(require("cookie-parser")());
 application.use(require("body-parser").json());
@@ -19,24 +23,14 @@ application.use(require("body-parser").urlencoded({extended: true}));
 application.use(require("express-session")({secret: "getting bizy!!", saveUninitialized: true, resave: true}));
 
 ///////////////////////////////////////////////////
-////////////////////DATABASING////////////////////
+////////////////////databasing////////////////////
 /////////////////////////////////////////////////
 
 var database = mongo("bizy", ["users"]);
 require("./placeholders.js")(database);
 
 ///////////////////////////////////////////////////
-////////////////////TEMPLATING////////////////////
-/////////////////////////////////////////////////
-
-var options = require("./configs/handlebars.options.js");
-
-application.engine("handlebars", handlebars(options));
-application.set("view engine", "handlebars");
-application.set("views", "./content");
-
-///////////////////////////////////////////////////
-//////////////////AUTHENTICATION//////////////////
+//////////////////authenticating//////////////////
 /////////////////////////////////////////////////
 
 passport.serializeUser(function(user, done) {done(null, user);});
@@ -63,42 +57,33 @@ passport.use(new LinkedinStrategy(linkedin_credentials, linkedin_callback));
 application.use(passport.initialize());
 application.use(passport.session());
 
-application.get("/login/google", passport.authenticate("google", {scope: ["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email"]}));
-application.get("/login/facebook", passport.authenticate("facebook", {scope: ["email"]}));
-application.get("/login/linkedin", passport.authenticate("linkedin", {scope: ["r_basicprofile", 'r_emailaddress']}));
-
-application.get("/login/google/again", passport.authenticate("google", {successRedirect: "/profile", failureRedirect: "/login"}));
-application.get("/login/facebook/again", passport.authenticate("facebook", {successRedirect: "/profile", failureRedirect: "/login"}));
-application.get("/login/linkedin/again", passport.authenticate("linkedin", {successRedirect: "/profile", failureRedirect: "/login"}));
-
-application.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
-
 ///////////////////////////////////////////////////
-/////////////////////ROUTING//////////////////////
+////////////////////templating////////////////////
 /////////////////////////////////////////////////
 
-application.use(express.static("./resources"));
+var options = require("./configs/handlebars.options.js");
 
-application.use(function(request, response, next)
-{
-	if(request.isAuthenticated())
-	{
-		response.locals.me = request.user;
-	}
-	
-	next();
-});
-
-application.use("/", require("./routes/splash.route.js")());
-application.use("/profile", require("./routes/profile.route.js")(database));
-
-application.get("*", function(request, response)
-{
-	response.render("error");
-});
+application.engine("handlebars", handlebars(options));
+application.set("view engine", "handlebars");
+application.set("views", "./content");
 
 ///////////////////////////////////////////////////
-////////////////////LISTENING/////////////////////
+/////////////////////routing//////////////////////
+/////////////////////////////////////////////////
+
+application.use(require("./utilities/expose-user-details"));
+
+application.use(require("express").static("./resources"));
+
+application.use("/", require("./routes/splash.route.js")());
+application.use("/login", require("./routes/login.route.js")(passport, database));
+application.use("/profile", require("./routes/profile.route.js")(database));
+
+application.get("/logout", function(request, response) {request.logout(); response.redirect("/");});
+application.get("*", function(request, response) {response.render("error");});
+
+///////////////////////////////////////////////////
+////////////////////listening/////////////////////
 /////////////////////////////////////////////////
 
 var port = process.env.PORT || 1271;
