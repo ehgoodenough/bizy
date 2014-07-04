@@ -21,6 +21,7 @@ application.use(require("cookie-parser")());
 application.use(require("body-parser").json());
 application.use(require("body-parser").urlencoded({extended: true}));
 application.use(require("express-session")({secret: "getting bizy!!", saveUninitialized: true, resave: true}));
+application.use(require("connect-flash")());
 
 ///////////////////////////////////////////////////
 ////////////////////databasing////////////////////
@@ -72,6 +73,7 @@ application.set("views", "./content");
 /////////////////////////////////////////////////
 
 application.use(require("./middleware/user-locals"));
+application.use(require("./middleware/error-locals"));
 
 application.use(require("express").static("./resources"));
 

@@ -10,6 +10,7 @@
 		"express": "*",
 		"body-parser": "*",
 		"cookie-parser": "*",
+		"connect-flash": "*",
 		"express-session": "*",
 		"express3-handlebars": "*",
 		"passport": "*",

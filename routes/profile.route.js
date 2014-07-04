@@ -3,7 +3,7 @@ module.exports = function(database)
 	var route = require("express").Router();
 	
 	route.use(require("../middleware/authed-access"));
-
+	
 	route.get("/", function(request, response)
 	{
 		if(request.user.username)
@@ -25,6 +25,7 @@ module.exports = function(database)
 		{
 			if(user)
 			{
+				request.flash("error", 123);
 				response.redirect("/profile");
 			}
 			else
